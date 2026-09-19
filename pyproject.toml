@@ -1,0 +1,26 @@
+[project]
+name = "blogapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "purrya", email = "tikhonenko_ad.vl.ru" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.1.1",
+    "django-cors-headers>=4.9.0",
+    "djangorestframework>=3.18.1",
+    "ruff>=0.16.8",
+]
+
+[project.scripts]
+blogapi = "blogapi:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+# Django migrations are auto-generated; don't lint/format them.
+extend-exclude = ["*/migrations/*"]
