@@ -54,12 +54,18 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    "https:/localhost:3000",
-    "https:/localhost:8000",
-)
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:3000",
+    "https://localhost:8000",
+]
 
-CSRF_TRUSTED_ORIGINS = ["https:/localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["https://localhost:3000"]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
 ROOT_URLCONF = "django_project.urls"
 
@@ -139,3 +145,7 @@ MAILERS = {
 }
 
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+# Where to send users after a successful login via rest_framework.urls
+# (django.contrib.auth.views.LoginView) when no ?next= is provided.
+LOGIN_REDIRECT_URL = "/api/v1/"
